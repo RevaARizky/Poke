@@ -7,27 +7,19 @@ const Pokemon = () => {
     const [isLoading, setLoading] = useState(true)
     
     useEffect(() => {
-        let arr = []
-        let obj = {}
+        const getState = window.localStorage.getItem('data')
         axios.get('https://pokeapi.co/api/v2/pokemon/')
         .then(res => {
             const results = res.data.results;
-            results.forEach(function(key){
-                axios.get(key.url)
-                .then(res => {
-                    obj = {'name' : res.data.name, 'types' : res.data.types, 'id' : res.data.id, 'img': res.data.sprites.other['official-artwork'].front_default}
-                    arr.push(obj)
-                })
-            })
+            if(JSON.stringify(results) !== getState){
+                console.log('local not set')
+                window.localStorage.setItem('data', JSON.stringify(results))
+            }
         })
         .catch(error => {console.log(error)})
+        setPokemons(JSON.parse(getState))
         setLoading(false)
-        setPokemons(arr.sort((firstItem, secondItem) => firstItem.id - secondItem.id))
-        // console.log({arr})
     }, [])
-    console.log(pokemons)
-    
-    console.log(typeof pokemons)
     if(isLoading) {
         return(
             <div id="poke">
@@ -35,9 +27,9 @@ const Pokemon = () => {
             </div>
         )
     }
-    return (
+    return ( 
         <div id="poke">
-            <PokemonCard data={pokemons}> </PokemonCard>
+            <PokemonCard data={pokemons}/>
         </div>
     )
     

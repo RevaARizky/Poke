@@ -1,21 +1,50 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useState } from 'react'
+import { useEffect } from 'react/cjs/react.development'
 import './Pokemon.css'
 
 const PokemonCard = (props) => {
-    console.log(props.data)
-    // console.log(props.data.map(data => console.log(data)))
+    const [isLoading, setLoading] = useState(true)
+    const [poke, setPoke] = useState()
+    useEffect(() => {
+        const getState = window.localStorage.getItem('pokes')
+        let arr = []
+        let obj = {}
+        props.data.map(data=> 
+            axios.get(data.url)
+            .then( res => {
+                obj = {name: res.data.name, id: res.data.id, img: res.data.sprites.other['official-artwork'].front_default}
+                arr.push(obj)
+                if(JSON.stringify(arr).length !== JSON.stringify(getState).length){
+                    window.localStorage.setItem('pokes', JSON.stringify(arr))
+                }
+            })
+        )
+        setPoke(JSON.parse(getState))
+        setLoading(false)
+    }, [])
+
+    if(isLoading) {
+        return(
+            <div id="poke">
+                <h2>Loading...</h2>
+            </div>
+        )
+    }
+    
     return(
-        <div className="container">
-            {props.data.map(data => 
-                    <div className="card" key={data.id}>
-                        <div className="card-image">
-                            <img src={data.img} className="poke-image"></img>
+        <div className="main-container">
+            {poke.map((data) => {
+                return(
+                    <div key={data.id} className="card">
+                        <div className="sprite-image">
+                            <img src={data.img} className="poke-image" />  
                         </div>
-                        <div className="card-name">
-                            <h3 className="poke-name">{data.name}</h3>
-                        </div>
+                        <h4>{data.name}</h4>
+                        <p>{data.id}</p>
                     </div>
-            )}
+                )
+            })}
         </div>
     )
 }
