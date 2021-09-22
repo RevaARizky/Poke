@@ -34,7 +34,7 @@ const PokemonCard = (props) => {
     
     return(
         <div className="main-container">
-            {poke.map((data) => {
+            {poke.sort((first, second) => first.id - second.id).map((data) => {
                 return(
                     <div key={data.id} className="card">
                         <div className="sprite-image">
