@@ -1,0 +1,19 @@
+.main-container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    position: relative;
+    width: 31.3%;
+    margin: 20px 1%;
+    text-align: center;
+}
+
+.sprite-image .poke-image {
+    width: 50%;
+    margin: auto;
+    background-color: #f2f2f2;
+}
