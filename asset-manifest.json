@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Poke/static/css/main.ec4bfe80.chunk.css",
+    "main.js": "/Poke/static/js/main.87489396.chunk.js",
+    "main.js.map": "/Poke/static/js/main.87489396.chunk.js.map",
+    "runtime-main.js": "/Poke/static/js/runtime-main.f2083ee9.js",
+    "runtime-main.js.map": "/Poke/static/js/runtime-main.f2083ee9.js.map",
+    "static/js/2.1cb26f18.chunk.js": "/Poke/static/js/2.1cb26f18.chunk.js",
+    "static/js/2.1cb26f18.chunk.js.map": "/Poke/static/js/2.1cb26f18.chunk.js.map",
+    "static/js/3.482f19c3.chunk.js": "/Poke/static/js/3.482f19c3.chunk.js",
+    "static/js/3.482f19c3.chunk.js.map": "/Poke/static/js/3.482f19c3.chunk.js.map",
+    "index.html": "/Poke/index.html",
+    "static/css/main.ec4bfe80.chunk.css.map": "/Poke/static/css/main.ec4bfe80.chunk.css.map",
+    "static/js/2.1cb26f18.chunk.js.LICENSE.txt": "/Poke/static/js/2.1cb26f18.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f2083ee9.js",
+    "static/js/2.1cb26f18.chunk.js",
+    "static/css/main.ec4bfe80.chunk.css",
+    "static/js/main.87489396.chunk.js"
+  ]
+}
